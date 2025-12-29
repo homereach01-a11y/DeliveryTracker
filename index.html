@@ -210,8 +210,58 @@
     <p>&copy; 2025 Delivery Tracker | All Rights Reserved</p>
   </footer>
 
+    <div class="container">
+    <!-- Navigation Buttons -->
+    <button id="delivery-btn">Track Delivery</button>
+    <button id="contact-btn">Contact Us</button>
+
+    <!-- Delivery Tracking Section -->
+    <div id="delivery-section" class="section">
+      <h2>Track Your Delivery</h2>
+      <form id="tracking-form">
+        <div>
+          <input type="text" id="trackingNumber" placeholder="Enter Tracking Number" required>
+        </div>
+        <div>
+          <input type="text" id="postcode" placeholder="Enter Postcode" required>
+        </div>
+        <button type="submit">Track</button>
+      </form>
+      <div id="tracking-result"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-section" class="section">
+      <h2>Contact Details</h2>
+      <div class="contact-info">
+        <p><strong>Email:</strong> contact@yourdomain.com</p>
+        <p><strong>Phone:</strong> +123 456 7890</p>
+        <p><strong>Address:</strong> 123 Street Name, City, Country</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Function to send the GET request and display the result
+
+    // JavaScript to toggle between sections
+    const deliveryBtn = document.getElementById("delivery-btn");
+    const contactBtn = document.getElementById("contact-btn");
+    const deliverySection = document.getElementById("delivery-section");
+    const contactSection = document.getElementById("contact-section");
+
+    // Show Delivery Tracking section
+    deliveryBtn.addEventListener("click", function() {
+      deliverySection.style.display = "block";
+      contactSection.style.display = "none";
+    });
+
+    // Show Contact Us section
+    contactBtn.addEventListener("click", function() {
+      contactSection.style.display = "block";
+      deliverySection.style.display = "none";
+    });
+
     function trackDelivery() {
       var trackingNumber = document.getElementById('trackingNumber').value;
       var postcode = document.getElementById('postcode').value;
@@ -249,3 +299,4 @@
 
 </body>
 </html>
+
