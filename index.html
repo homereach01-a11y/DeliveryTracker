@@ -4,218 +4,119 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HomeReach Delivery Tracking</title>
-  
-  <!-- Google Fonts for modern typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
   <style>
-    /* Base styling */
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f8fb;
-      color: #333;
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
       margin: 0;
       padding: 0;
+    }
+
+    /* Header with logo and title */
+    .header {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      height: 100vh;
-      box-sizing: border-box;
-    }
-
-    /* Header Section */
-    header {
-      background-color: #1e3a5f;
+      background-color: #2c3e50; /* Navy blue */
+      padding: 20px;
       color: white;
-      width: 100%;
-      padding: 20px 0;
-      text-align: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    header h1 {
-      font-size: 36px;
+    #logo {
+      max-width: 120px;
+      margin-right: 20px;
+      background-color: transparent;
+    }
+
+    h1 {
       margin: 0;
-      font-weight: 700;
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
     }
 
-    header p {
-      font-size: 18px;
-      margin-top: 5px;
-    }
-
-    /* Navigation Bar */
-    nav {
-      background-color: #16314d;
-      width: 100%;
-      padding: 10px 0;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Main content section */
+    /* Main container */
     .container {
-      background-color: white;
-      width: 100%;
-      max-width: 500px;
-      padding: 40px;
-      margin-top: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 70%;
+      margin: 0 auto;
       text-align: center;
+      padding: 40px;
     }
 
-    /* Form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    label {
-      font-size: 16px;
-      font-weight: 500;
-      color: #1e3a5f;
-      text-align: left;
-    }
-
-    input {
-      padding: 12px 16px;
-      font-size: 16px;
-      margin-bottom: 20px;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      outline: none;
-      transition: border 0.3s ease;
-    }
-
-    input:focus {
-      border-color: #1e3a5f;
-    }
-
-    /* Button */
+    /* Buttons */
     button {
-      padding: 14px 20px;
-      background-color: #1e3a5f;
+      background-color: #3498db;
       color: white;
+      padding: 15px 30px;
       font-size: 16px;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
+      font-weight: bold;
+      border-radius: 25px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 15px 10px;
+      border: none;
+      transition: background-color 0.3s ease;
+      display: inline-block;
     }
 
     button:hover {
-      background-color: #16314d;
-      transform: translateY(-3px);
+      background-color: #2980b9;
     }
 
-    button:active {
-      background-color: #10253a;
-      transform: translateY(1px);
-    }
-
-    /* Result Box */
-    #result {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #e3f2fd;
-      border-radius: 8px;
-      color: #333;
-      font-size: 18px;
-      border: 1px solid #b3e5fc;
-      display: none;
-    }
-
-    .error {
-      background-color: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
-    }
-
-    /* Footer Section */
-    footer {
-      background-color: #16314d;
-      color: white;
-      text-align: center;
+    /* Form input fields */
+    input[type="text"] {
       padding: 15px;
-      width: 100%;
-      margin-top: 40px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 400px;
+      margin: 15px 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .container {
-        padding: 30px;
-      }
-
-      header h1 {
-        font-size: 28px;
-      }
-
-      nav a {
-        font-size: 16px;
-      }
+    /* Sections */
+    .section {
+      display: none; /* Hidden by default */
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
     }
 
+    .contact-info {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+    }
+
+    #tracking-result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header Section -->
-  <header>
+  <!-- Header -->
+  <div class="header">
+    <img src="Home Reach_20251229_141819_0000.png" id="logo" alt="Logo"> <!-- Replace with your logo -->
     <h1>HomeReach Delivery Tracking</h1>
-    <p>Track your order status quickly and easily</p>
-  </header>
-
-  <!-- Navigation Bar -->
-  <nav>
-    <a href="#track">Track Delivery</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
-
-  <!-- Main Content Section -->
-  <div class="container" id="track">
-    <h2>Track Your Delivery</h2>
-    
-    <!-- Tracking Form -->
-    <form onsubmit="event.preventDefault(); trackDelivery();">
-      <label for="trackingNumber">Tracking Number:</label>
-      <input type="text" id="trackingNumber" required placeholder="Enter your tracking number">
-
-      <label for="postcode">Postcode:</label>
-      <input type="text" id="postcode" required placeholder="Enter your postcode">
-
-      <button type="submit">Track</button>
-    </form>
-
-    <!-- Result Display -->
-    <p id="result"></p>
   </div>
 
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; 2025 Delivery Tracker | All Rights Reserved</p>
-  </footer>
-
-    <div class="container">
-    <!-- Navigation Buttons -->
+  <div class="container">
+    <!-- Navigation buttons -->
     <button id="delivery-btn">Track Delivery</button>
     <button id="contact-btn">Contact Us</button>
 
-    <!-- Delivery Tracking Section -->
+    <!-- Delivery tracking section -->
     <div id="delivery-section" class="section">
       <h2>Track Your Delivery</h2>
       <form id="tracking-form">
@@ -230,7 +131,7 @@
       <div id="tracking-result"></div>
     </div>
 
-    <!-- Contact Section -->
+    <!-- Contact section -->
     <div id="contact-section" class="section">
       <h2>Contact Details</h2>
       <div class="contact-info">
@@ -242,61 +143,62 @@
   </div>
 
   <script>
-    // Function to send the GET request and display the result
-
-    // JavaScript to toggle between sections
+    // Elements
     const deliveryBtn = document.getElementById("delivery-btn");
     const contactBtn = document.getElementById("contact-btn");
     const deliverySection = document.getElementById("delivery-section");
     const contactSection = document.getElementById("contact-section");
 
-    // Show Delivery Tracking section
-    deliveryBtn.addEventListener("click", function() {
+    // Show delivery section by default
+    deliverySection.style.display = "block";
+
+    // Toggle to delivery section
+    deliveryBtn.addEventListener("click", () => {
       deliverySection.style.display = "block";
       contactSection.style.display = "none";
     });
 
-    // Show Contact Us section
-    contactBtn.addEventListener("click", function() {
+    // Toggle to contact section
+    contactBtn.addEventListener("click", () => {
       contactSection.style.display = "block";
       deliverySection.style.display = "none";
     });
 
-    function trackDelivery() {
-      var trackingNumber = document.getElementById('trackingNumber').value;
-      var postcode = document.getElementById('postcode').value;
-      
-      // Construct the URL for the GET request
-      var url = 'https://script.google.com/macros/s/AKfycbzIFxMNrAyCq3Li2jBmKrHvaXLQLTMNwC-n_sEuqiv4mnKR8aHcEv5Wt5PoaJym7-fNSQ/exec?trackingNumber=' + trackingNumber + '&postcode=' + postcode;
-      
-      // Send the request using fetch API
-      fetch(url)
+    // Handle tracking form submission
+    const trackingForm = document.getElementById("tracking-form");
+    const trackingResult = document.getElementById("tracking-result");
+
+    trackingForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const trackingNumber = document.getElementById("trackingNumber").value;
+      const postcode = document.getElementById("postcode").value;
+
+      // Replace with your Google Apps Script Web App URL
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbzIFxMNrAyCq3Li2jBmKrHvaXLQLTMNwC-n_sEuqiv4mnKR8aHcEv5Wt5PoaJym7-fNSQ/exec';
+
+      fetch(`${googleScriptUrl}?trackingNumber=${trackingNumber}&postcode=${postcode}`)
         .then(response => response.json())
         .then(data => {
-          var resultElement = document.getElementById('result');
-          resultElement.style.display = 'block'; // Show result section
-
           if (data.error) {
-            resultElement.classList.add('error');
-            resultElement.innerHTML = data.error;
+            trackingResult.innerHTML = `<p>${data.error}</p>`;
           } else {
-            resultElement.classList.remove('error');
-            if (data.deliveryDate) {
-              resultElement.innerHTML = 'Status: ' + data.status + '<br>Delivery Date: ' + data.deliveryDate;
-            } else if (data.expectedDelivery) {
-              resultElement.innerHTML = 'Status: ' + data.status + '<br>Expected Delivery: ' + data.expectedDelivery;
-            }
+            trackingResult.innerHTML = `
+              <h3>Tracking Information:</h3>
+              <p><strong>Tracking Number:</strong> ${trackingNumber}</p>
+              <p><strong>Postcode:</strong> ${postcode}</p>
+              <p>Status: ${data.status}</p>
+              <p>Expected Delivery: ${data.expectedDelivery}</p>
+              <p>Delivery Date: ${data.deliveryDate}</p>
+            `;
           }
         })
         .catch(error => {
-          var resultElement = document.getElementById('result');
-          resultElement.style.display = 'block'; // Show result section
-          resultElement.classList.add('error');
-          resultElement.innerHTML = 'Error: ' + error.message;
+          console.error('Error:', error);
+          trackingResult.innerHTML = `<p>There was an error fetching the tracking information.</p>`;
         });
-    }
+    });
   </script>
 
 </body>
 </html>
-
