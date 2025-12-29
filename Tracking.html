@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Tracking - Professional Service</title>
+  
+  <!-- Google Fonts for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Base styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f8fb;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* Header Section */
+    header {
+      background-color: #1e3a5f;
+      color: white;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #16314d;
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content section */
+    .container {
+      background-color: white;
+      width: 100%;
+      max-width: 500px;
+      padding: 40px;
+      margin-top: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #1e3a5f;
+      text-align: left;
+    }
+
+    input {
+      padding: 12px 16px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: border 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #1e3a5f;
+    }
+
+    /* Button */
+    button {
+      padding: 14px 20px;
+      background-color: #1e3a5f;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #16314d;
+      transform: translateY(-3px);
+    }
+
+    button:active {
+      background-color: #10253a;
+      transform: translateY(1px);
+    }
+
+    /* Result Box */
+    #result {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e3f2fd;
+      border-radius: 8px;
+      color: #333;
+      font-size: 18px;
+      border: 1px solid #b3e5fc;
+      display: none;
+    }
+
+    .error {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+    }
+
+    /* Footer Section */
+    footer {
+      background-color: #16314d;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px;
+      }
+
+      header h1 {
+        font-size: 28px;
+      }
+
+      nav a {
+        font-size: 16px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Delivery Tracking System</h1>
+    <p>Track your order status quickly and easily</p>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#track">Track Delivery</a>
+    <a href="#help">Help</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+
+  <!-- Main Content Section -->
+  <div class="container" id="track">
+    <h2>Track Your Delivery</h2>
+    
+    <!-- Tracking Form -->
+    <form onsubmit="event.preventDefault(); trackDelivery();">
+      <label for="trackingNumber">Tracking Number:</label>
+      <input type="text" id="trackingNumber" required placeholder="Enter your tracking number">
+
+      <label for="postcode">Postcode:</label>
+      <input type="text" id="postcode" required placeholder="Enter your postcode">
+
+      <button type="submit">Track</button>
+    </form>
+
+    <!-- Result Display -->
+    <p id="result"></p>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Delivery Tracker | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Function to send the GET request and display the result
+    function trackDelivery() {
+      var trackingNumber = document.getElementById('trackingNumber').value;
+      var postcode = document.getElementById('postcode').value;
+      
+      // Construct the URL for the GET request
+      var url = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzIFxMNrAyCq3Li2jBmKrHvaXLQLTMNwC-n_sEuqiv4mnKR8aHcEv5Wt5PoaJym7-fNSQ/exec/exec?trackingNumber=' + trackingNumber + '&postcode=' + postcode;
+      
+      // Send the request using fetch API
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          var resultElement = document.getElementById('result');
+          resultElement.style.display = 'block'; // Show result section
+
+          if (data.error) {
+            resultElement.classList.add('error');
+            resultElement.innerHTML = data.error;
+          } else {
+            resultElement.classList.remove('error');
+            if (data.deliveryDate) {
+              resultElement.innerHTML = 'Status: ' + data.status + '<br>Delivery Date: ' + data.deliveryDate;
+            } else if (data.expectedDelivery) {
+              resultElement.innerHTML = 'Status: ' + data.status + '<br>Expected Delivery: ' + data.expectedDelivery;
+            }
+          }
+        })
+        .catch(error => {
+          var resultElement = document.getElementById('result');
+          resultElement.style.display = 'block'; // Show result section
+          resultElement.classList.add('error');
+          resultElement.innerHTML = 'Error: ' + error.message;
+        });
+    }
+  </script>
+
+</body>
+</html>
