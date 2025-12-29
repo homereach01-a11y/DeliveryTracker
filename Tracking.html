@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Delivery Tracking - Professional Service</title>
+  <title>HomeReach Delivery Tracking</title>
   
   <!-- Google Fonts for modern typography -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -176,14 +176,13 @@
 
   <!-- Header Section -->
   <header>
-    <h1>Delivery Tracking System</h1>
+    <h1>HomeReach Delivery Tracking</h1>
     <p>Track your order status quickly and easily</p>
   </header>
 
   <!-- Navigation Bar -->
   <nav>
     <a href="#track">Track Delivery</a>
-    <a href="#help">Help</a>
     <a href="#contact">Contact Us</a>
   </nav>
 
@@ -218,7 +217,7 @@
       var postcode = document.getElementById('postcode').value;
       
       // Construct the URL for the GET request
-      var url = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbzIFxMNrAyCq3Li2jBmKrHvaXLQLTMNwC-n_sEuqiv4mnKR8aHcEv5Wt5PoaJym7-fNSQ/exec/exec?trackingNumber=' + trackingNumber + '&postcode=' + postcode;
+      var url = 'https://script.google.com/macros/s/AKfycbzIFxMNrAyCq3Li2jBmKrHvaXLQLTMNwC-n_sEuqiv4mnKR8aHcEv5Wt5PoaJym7-fNSQ/exec?trackingNumber=' + trackingNumber + '&postcode=' + postcode;
       
       // Send the request using fetch API
       fetch(url)
@@ -250,3 +249,4 @@
 
 </body>
 </html>
+
