@@ -1,316 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HomeReach Delivery Tracking</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeReach Delivery Tracking</title>
 
-  <style>
-    /* Base styling */
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f8fb;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    /* Header Section */
-    header {
-      background-color: #1e3a5f;
-      color: white;
-      width: 100%;
-      padding: 20px 40px;
-    }
+    <style>
+        /* Base styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f8fb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
 
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start; /* logo on the left */
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+        /* Header Section */
+        header {
+            background-color: #1e3a5f;
+            color: white;
+            width: 100%;
+            padding: 20px 40px;
+        }
 
-    .logo {
-      height: 100px; /* bigger logo */
-    }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-    .header-text h1 {
-      font-size: 36px;
-      margin: 0;
-      font-weight: 700;
-    }
+        .logo {
+            height: 100px;
+        }
 
-    .header-text p {
-      font-size: 18px;
-      margin-top: 5px;
-    }
+        .header-text h1 {
+            font-size: 36px;
+            margin: 0;
+            font-weight: 700;
+        }
 
-    /* Navigation Bar */
-    nav {
-      background-color: #16314d;
-      width: 100%;
-      padding: 10px 0;
-      text-align: center;
-    }
+        .header-text p {
+            font-size: 18px;
+            margin-top: 5px;
+        }
 
-    nav button {
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      padding: 8px 15px;
-      margin: 0 10px;
-      font-size: 16px;
-      font-weight: 500;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        /* Navigation Bar */
+        nav {
+            background-color: #16314d;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
 
-    nav button:hover {
-      background-color: white;
-      color: #1e3a5f;
-    }
+        nav button {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 8px 15px;
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-    /* Main content section */
-    .container {
-      background-color: white;
-      width: 100%;
-      max-width: 500px;
-      padding: 40px;
-      margin-top: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+        nav button:hover {
+            background-color: white;
+            color: #1e3a5f;
+        }
 
-    .page {
-      display: none;
-    }
+        /* Main content section */
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
 
-    .active {
-      display: block;
-    }
+        .page {
+            display: none;
+        }
 
-    /* Form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        .active {
+            display: block;
+        }
 
-    label {
-      font-size: 16px;
-      font-weight: 500;
-      color: #1e3a5f;
-      text-align: left;
-    }
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    input {
-      padding: 12px 16px;
-      font-size: 16px;
-      border: 2px solid #ddd;
-      border-radius: 8px;
-      outline: none;
-      transition: border 0.3s ease;
-    }
+        label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1e3a5f;
+            text-align: left;
+        }
 
-    input:focus {
-      border-color: #1e3a5f;
-    }
+        input {
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border 0.3s ease;
+        }
 
-    /* Buttons */
-    button {
-      padding: 14px 20px;
-      background-color: #1e3a5f;
-      color: white;
-      font-size: 16px;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+        input:focus {
+            border-color: #1e3a5f;
+        }
 
-    button:hover {
-      background-color: #16314d;
-      transform: translateY(-2px);
-    }
+        /* Buttons */
+        button {
+            padding: 14px 20px;
+            background-color: #1e3a5f;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-    button:active {
-      background-color: #10253a;
-      transform: translateY(1px);
-    }
+        button:hover {
+            background-color: #16314d;
+            transform: translateY(-2px);
+        }
 
-    /* Result Box */
-    #result {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #e3f2fd;
-      border-radius: 8px;
-      color: #333;
-      font-size: 18px;
-      border: 1px solid #b3e5fc;
-      display: none;
-    }
+        button:active {
+            background-color: #10253a;
+            transform: translateY(1px);
+        }
 
-    .error {
-      background-color: #f8d7da;
-      border-color: #f5c6cb;
-      color: #721c24;
-    }
+        /* Result Box */
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            color: #333;
+            font-size: 18px;
+            border: 1px solid #b3e5fc;
+            display: none;
+        }
 
-    /* Footer Section */
-    footer {
-      background-color: #16314d;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      width: 100%;
-      margin-top: 40px;
-    }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
 
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .container {
-        padding: 30px;
-      }
+        /* Footer Section */
+        footer {
+            background-color: #16314d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            margin-top: 40px;
+        }
 
-      .header-container {
-        flex-direction: column;
-        align-items: center;
-      }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
 
-      .logo {
-        height: 80px;
-      }
+            .header-container {
+                flex-direction: column;
+                align-items: center;
+            }
 
-      .header-text h1 {
-        font-size: 28px;
-        text-align: center;
-      }
+            .logo {
+                height: 80px;
+            }
 
-      .header-text p {
-        text-align: center;
-      }
+            .header-text h1 {
+                font-size: 28px;
+                text-align: center;
+            }
 
-      nav button {
-        font-size: 14px;
-        margin: 5px;
-        padding: 6px 10px;
-      }
-    }
-  </style>
+            .header-text p {
+                text-align: center;
+            }
+
+            nav button {
+                font-size: 14px;
+                margin: 5px;
+                padding: 6px 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- Header Section -->
-  <header>
-    <div class="header-container">
-      <img src="Home Reach_20251229_141819_0000.png" alt="Logo" class="logo">
-      <div class="header-text">
-        <h1>HomeReach Delivery Tracking</h1>
-        <p>Track your order status quickly and easily</p>
-      </div>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <img src="Home Reach_20251229_141819_0000.png" alt="Logo" class="logo">
+            <div class="header-text">
+                <h1>HomeReach Delivery Tracking</h1>
+                <p>Track your order status quickly and easily</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <button onclick="showPage('track')">Track Delivery</button>
+        <button onclick="showPage('contact')">Contact Us</button>
+    </nav>
+
+    <!-- Track Delivery Page -->
+    <div class="container page active" id="track">
+        <h2>Track Your Delivery</h2>
+
+        <!-- Tracking Form -->
+        <form onsubmit="event.preventDefault(); trackDelivery();">
+            <label for="trackingNumber">Tracking Number:</label>
+            <input type="text" id="trackingNumber" required placeholder="Enter your tracking number">
+
+            <label for="postcode">Postcode:</label>
+            <input type="text" id="postcode" required placeholder="Enter your postcode">
+
+            <button type="submit">Track</button>
+        </form>
+
+        <!-- Result Display -->
+        <p id="result"></p>
     </div>
-  </header>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <button onclick="showPage('track')">Track Delivery</button>
-    <button onclick="showPage('contact')">Contact Us</button>
-  </nav>
+    <!-- Contact Page -->
+    <div class="container page" id="contact">
+        <h2>Contact Us</h2>
+        <p style="text-align: center;">You can reach us using the following methods:</p>
+        <ul style="list-style: none; padding-left: 0; text-align: center;">
+            <li><strong>Email:</strong> info@homereachuk.co.uk</li>
+            <li><strong>Phone:</strong> +44759 908 5786</li>
+            <li><strong>Address:</strong> 103 High Street, Brierley Hill, DY5 3AU, UK</li>
+        </ul>
+        <p style="text-align: center;">We’re available Monday to Friday, 9:00 AM – 5:00 PM.</p>
+    </div>
 
-  <!-- Track Delivery Page -->
-  <div class="container page active" id="track">
-    <h2>Track Your Delivery</h2>
-    
-    <!-- Tracking Form -->
-    <form onsubmit="event.preventDefault(); trackDelivery();">
-      <label for="trackingNumber">Tracking Number:</label>
-      <input type="text" id="trackingNumber" required placeholder="Enter your tracking number">
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Delivery Tracker | All Rights Reserved</p>
+    </footer>
 
-      <label for="postcode">Postcode:</label>
-      <input type="text" id="postcode" required placeholder="Enter your postcode">
+    <script>
+        // Toggle between pages
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
 
-      <button type="submit">Track</button>
-    </form>
+        // Track delivery function
+        function trackDelivery() {
+            var trackingNumber = document.getElementById('trackingNumber').value;
+            var postcode = document.getElementById('postcode').value;
+            var url = 'https://script.google.com/macros/s/AKfycbyK_PAfhTZuqvxGyhiV9dewX43RgYen5KFkW312cDhROdCnkU7EMOP2zgiz2poQCJRPwA/exec?trackingNumber=' + trackingNumber + '&postcode=' + postcode;
 
-    <!-- Result Display -->
-    <p id="result"></p>
-  </div>
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var resultElement = document.getElementById('result');
+                    resultElement.style.display = 'block';
 
-  <!-- Contact Page -->
-  <div class="container page" id="contact">
-    <h2>Contact Us</h2>
-    <p style="text-align: center;">You can reach us using the following methods:</p>
-    <ul style="list-style: none; padding-left: 0; text-align: center;">
-      <li><strong>Email:</strong> info@homereachuk.co.uk</li>
-      <li><strong>Phone:</strong> +44759 908 5786</li>
-      <li><strong>Address:</strong> 103 High Street, Brierley Hill, DY5 3AU, UK</li>
-    </ul>
-    <p style="text-align: center;">We’re available Monday to Friday, 9:00 AM – 5:00 PM.</p>
-  </div>
+                    if (data.error) {
+                        resultElement.classList.add('error');
+                        resultElement.innerHTML = data.error;
+                    } else {
+                        resultElement.classList.remove('error');
+                        if (data.deliveryDate) {
+                            resultElement.innerHTML = 'Status: ' + data.status + '<br>Delivery Date: ' + data.deliveryDate;
+                        } else if (data.expectedDelivery) {
+                            resultElement.innerHTML = 'Status: ' + data.status + '<br>Expected Delivery: ' + data.expectedDelivery;
+                        }
 
-  <!-- Footer Section -->
-  <footer>
-    <p>&copy; 2025 Delivery Tracker | All Rights Reserved</p>
-  </footer>
-
-  <script>
-    // Toggle between pages
-    function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-    }
-
-    // Track delivery function
-    function trackDelivery() {
-      var trackingNumber = document.getElementById('trackingNumber').value;
-      var postcode = document.getElementById('postcode').value;
-      var url = 'https://script.google.com/macros/s/AKfycbzIFxMNrAyCq3Li2jBmKrHvaXLQLTMNwC-n_sEuqiv4mnKR8aHcEv5Wt5PoaJym7-fNSQ/exec?trackingNumber=' + trackingNumber + '&postcode=' + postcode;
-      
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          var resultElement = document.getElementById('result');
-          resultElement.style.display = 'block';
-
-          if (data.error) {
-            resultElement.classList.add('error');
-            resultElement.innerHTML = data.error;
-          } else {
-            resultElement.classList.remove('error');
-            if (data.deliveryDate) {
-              resultElement.innerHTML = 'Status: ' + data.status + '<br>Delivery Date: ' + data.deliveryDate;
-            } else if (data.expectedDelivery) {
-              resultElement.innerHTML = 'Status: ' + data.status + '<br>Expected Delivery: ' + data.expectedDelivery;
-            }
-          }
-        })
-        .catch(error => {
-          var resultElement = document.getElementById('result');
-          resultElement.style.display = 'block';
-          resultElement.classList.add('error');
-          resultElement.innerHTML = 'Error: ' + error.message;
-        });
-    }
-  </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
+                        // Display Proof of Delivery (Photo & Signature)
+                        if (data.deliveryPhotoUrl) {
+                            var photo = `<p><strong>Delivery Photo:</strong><br><img src="${
